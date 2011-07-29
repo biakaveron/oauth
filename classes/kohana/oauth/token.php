@@ -38,6 +38,11 @@ abstract class Kohana_OAuth_Token {
 	protected $token;
 
 	/**
+	 * @var array  token params
+	 */
+	protected $data = array();
+
+	/**
 	 * @var  string  required parameters
 	 */
 	protected $required = array(
@@ -62,6 +67,8 @@ abstract class Kohana_OAuth_Token {
 
 			$this->$key = $options[$key];
 		}
+
+		$this->data = $options;
 	}
 
 	/**
@@ -75,7 +82,7 @@ abstract class Kohana_OAuth_Token {
 	 */
 	public function __get($key)
 	{
-		return $this->$key;
+		return isset($this->$key) ? $this->$key : Arr::get($this->data, $key);
 	}
 
 	/**
