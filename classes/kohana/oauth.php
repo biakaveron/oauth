@@ -38,6 +38,8 @@ abstract class Kohana_OAuth {
 	{
 		// The transfer must always be returned
 		$options[CURLOPT_RETURNTRANSFER] = TRUE;
+		// Ignore provider redirects
+		$options[CURLOPT_FOLLOWLOCATION] = TRUE;
 
 		// Open a new remote connection
 		$remote = curl_init($url);
