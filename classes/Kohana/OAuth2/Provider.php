@@ -81,4 +81,16 @@ abstract class Kohana_OAuth2_Provider {
  	    return OAuth2_Token::factory('Access', $params);
 	}
 
+	/**
+	 * Execute an OAuth2 request, apply any provider-specfic options to the request.
+	 *
+	 * @param   object  request object
+	 * @param   array   request options
+	 * @return  mixed
+	 */
+	public function execute(OAuth2_Request $request, array $options = NULL)
+	{
+		return $request->execute($options);
+	}
+
 }
