@@ -6,7 +6,7 @@ abstract class Kohana_OAuth2_Request_Authorize extends OAuth2_Request {
 
 	public function execute(array $options = NULL)
 	{
-		return Request::current()->redirect($this->as_url());
+		HTTP::redirect($this->as_url());
 	}
 
 }

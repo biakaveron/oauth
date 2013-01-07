@@ -4,7 +4,7 @@ abstract class Kohana_OAuth2_Provider {
 
 	public static function factory($name, array $options = NULL)
 	{
-		$class = 'OAuth2_Provider_'.$name;
+		$class = 'OAuth2_Provider_'.UTF8::ucfirst($name);
 
 		return new $class($options);
 	}
@@ -75,9 +75,10 @@ abstract class Kohana_OAuth2_Provider {
 
 		$response = $request->execute();
 
-		return OAuth2_Token::factory('access', array(
-			'token' => $response->param('access_token')
-		));
+		$params = $response->params();
+		$params['token'] = $response->param('access_token');
+
+ 	    return OAuth2_Token::factory('access', $params);
 	}
 
 }

@@ -11,6 +11,8 @@
  */
 abstract class Kohana_OAuth_Provider {
 
+	protected $signature = 'PLAINTEXT';
+
 	/**
 	 * Create a new provider.
 	 *
@@ -23,7 +25,7 @@ abstract class Kohana_OAuth_Provider {
 	 */
 	public static function factory($name, array $options = NULL)
 	{
-		$class = 'OAuth_Provider_'.$name;
+		$class = 'OAuth_Provider_'.UTF8::ucfirst($name);
 
 		return new $class($options);
 	}
