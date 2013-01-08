@@ -22,7 +22,7 @@ abstract class Kohana_OAuth_Token {
 	 */
 	public static function factory($name, array $options = NULL)
 	{
-		$class = 'OAuth_Token_'.$name;
+		$class = 'OAuth_Token_'.UTF8::ucfirst($name);
 
 		return new $class($options);
 	}

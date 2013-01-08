@@ -1,8 +1,8 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 
-abstract class Kohana_OAuth2_Provider_Vk extends OAuth2_Provider {
+abstract class Kohana_OAuth2_Provider_Vkontakte extends OAuth2_Provider {
 
-	public $name = 'vk';
+	public $name = 'vkontakte';
 
 	public function url_authorize()
 	{
