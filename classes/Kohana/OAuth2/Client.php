@@ -31,6 +31,11 @@ class Kohana_OAuth2_Client {
 	protected $callback;
 
 	/**
+	 * @var array    array of consumer options
+	 */
+	protected $options = array();
+
+	/**
 	 * Sets the consumer key and secret.
 	 *
 	 * @param   array  consumer options, key and secret are required
@@ -58,6 +63,8 @@ class Kohana_OAuth2_Client {
 		{
 			$this->callback = $options['callback'];
 		}
+
+		$this->options = $options;
 	}
 
 	/**
@@ -71,7 +78,7 @@ class Kohana_OAuth2_Client {
 	 */
 	public function __get($key)
 	{
-		return $this->$key;
+		return isset($this->$key) ? $this->$key : Arr::get($this->options, $key);
 	}
 
 	/**
