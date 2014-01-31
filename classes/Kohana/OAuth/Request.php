@@ -488,7 +488,7 @@ class Kohana_OAuth_Request {
 		// Get the URL of the request
 		$url = $this->url;
 
-		if ($query = $this->as_query())
+		if ($this->method !== 'POST' AND $query = $this->as_query())
 		{
 			// Append the parameters to the query string
 			$url = "{$url}?{$query}";
